@@ -13,7 +13,8 @@ phases:
       - docker pull 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:green || true
       - docker tag webservicecourseworkrepo:latest 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:latest
       - echo Tagging the Docker image as green...
-      - docker tag ecr1:latest 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:green
+      - docker tag webservicecourseworkrepo:latest 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:green
+
   post_build:
     commands:
       - echo Pushing the Docker image with blue tag to ECR if it exists...
@@ -27,4 +28,3 @@ artifacts:
 
 
 
-  
