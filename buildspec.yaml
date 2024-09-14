@@ -3,17 +3,17 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 958526037165.dkr.ecr.ap-south-1.amazonaws.com
+      - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 958526037165.dkr.ecr.us-west-1.amazonaws.com
     
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t webservicecourseworkrepo .
+      - docker build -t webservicecourseworkreponew .
       - echo Tagging the current green image as blue if it exists...
       - docker pull 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:green || true
-      - docker tag webservicecourseworkrepo:latest 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:latest
+      - docker tag webservicecourseworkreponew:latest 958526037165.dkr.ecr.us-west-1.amazonaws.com/webservicecourseworkreponew:latest
       - echo Tagging the Docker image as green...
-      - docker tag webservicecourseworkrepo:latest 958526037165.dkr.ecr.ap-south-1.amazonaws.com/webservicecourseworkrepo:green
+      - docker push 958526037165.dkr.ecr.us-west-1.amazonaws.com/webservicecourseworkreponew:latest
 
   post_build:
     commands:
